@@ -17,8 +17,21 @@ from tg_bot.modules import ALL_MODULES
 from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
-PM_START_TEXT = """Ini adalah bot @Rose_Userbot khusus untuk 
-grup, kirim command di grup."""
+PM_START_TEXT = """
+hoi {}, my name is {}! if you have any questions about how to use me please give me /help... 
+
+im a group manager bot maintained by  [this person](tg://user?id={}).
+
+My future updates will be put into This Channel - @MarieChechi & My Support Group @InFoTelGroup.
+
+This is my [Deploy Code](https://heroku.com/deploy?template=https://github.com/TGExplore/Marie-2.0-English),
+you can create clone same like me..
+
+For more commands click /help...
+
+**Keep in mind that any changes you DO do to the source have to be on github, as per the license.**
+
+"""
 
 HELP_STRINGS = """
 
@@ -398,10 +411,10 @@ def main():
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
 
-    help_handler = CommandHandler("private", get_help)
+    help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
 
-    settings_handler = CommandHandler("privasi", get_settings)
+    settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     donate_handler = CommandHandler("donate", donate)
