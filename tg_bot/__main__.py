@@ -19,6 +19,7 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
 hoi {}, Bot Ini Khusus Group @Rose_Userbot, Jadi Jangan Tambahkan Saya Kegrub Kamu.
+
 """
 
 HELP_STRINGS = """
