@@ -41,7 +41,7 @@ DONATE_STRING = """Heya, senang mendengar Anda ingin menyumbang!
 Butuh banyak pekerjaan untuk [My Creator](t.me/pikyus1) untuk membawa saya ke tempat saya sekarang, dan setiap donasi membantu \
 memotivasi dia untuk membuat saya lebih baik. Semua uang donasi akan diberikan ke saya yang lebih baik untuk menampung saya, dan/atau bir \
 (lihat bio nya!). Dia hanya seorang siswa miskin, jadi setiap bantuan kecil!
-Ada dua cara untuk membayarnya: Kamu Bisa Lewat Bot [Bot Donasi](t.me/pikyus1), or [Pribadi](t.me/pikyus1)."""
+Ada dua cara untuk membayarnya: Kamu Bisa Lewat Bot [Bot Donasi](t.me/DonasiSendiBot), or [Pribadi](t.me/pikyus1)."""
 
 IMPORTED = {}
 MIGRATEABLE = []
