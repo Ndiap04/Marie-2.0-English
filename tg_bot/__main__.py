@@ -18,8 +18,18 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-hoi {}, my name is {}! Saya Adalah Bot Manager Yang Dirancang Khusus Untuk Group @Rose_Userbot\n
-Saya Dibuat Oleh [Sendi](tg://user?id={}), Tolong jangan Tambahkan Saya Kegrub Kamu.
+hoi {}, my name is {}! if you have any questions about how to use me please give me /help... 
+
+im a group manager bot maintained by  [this person](tg://user?id={}).
+
+My future updates will be put into This Channel - @MarieChechi & My Support Group @InFoTelGroup.
+
+This is my [Deploy Code](https://heroku.com/deploy?template=https://github.com/TGExplore/Marie-2.0-English),
+you can create clone same like me..
+
+For more commands click /help...
+
+**Keep in mind that any changes you DO do to the source have to be on github, as per the license.**
 
 """
 
@@ -399,7 +409,6 @@ def migrate_chats(bot: Bot, update: Update):
 
 def main():
     test_handler = CommandHandler("test", test)
-    start_handler = CommandHandler("start", start, pass_args=True)
 
     help_handler = CommandHandler("private", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
@@ -411,7 +420,6 @@ def main():
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     # dispatcher.add_handler(test_handler)
-    dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
