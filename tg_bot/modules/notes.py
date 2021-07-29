@@ -115,13 +115,13 @@ def get(bot, update, notename, show_none=True, no_format=False):
                                        "the meantime, I'll remove it from your notes list.")
                     sql.rm_note(chat_id, notename)
                 else:
-                    message.reply_text("This note could not be sent, as it is incorrectly formatted. Ask in "
-                                       "@MarieSupport if you can't figure out why!")
+                    message.reply_text("Catatan ini tidak dapat dikirim, karena formatnya salah. Tanyakan "
+                                       "@pikyus1 jika Anda tidak tahu mengapa!")
                     LOGGER.exception("Could not parse message #%s in chat %s", notename, str(chat_id))
                     LOGGER.warning("Message was: %s", str(note.value))
         return
     elif show_none:
-        message.reply_text("This note doesn't exist")
+        message.reply_text("Catatan ini tidak ada")
 
 
 @run_async
@@ -163,7 +163,7 @@ def save(bot: Bot, update: Update):
     note_name, text, data_type, content, buttons = get_note_type(msg)
 
     if data_type is None:
-        msg.reply_text("Dude, there's no note")
+        msg.reply_text("Bung, tidak ada catatan!")
         return
 
     if len(text.strip()) == 0:
@@ -172,7 +172,7 @@ def save(bot: Bot, update: Update):
     sql.add_note_to_db(chat_id, note_name, text, data_type, buttons=buttons, file=content)
 
     msg.reply_text(
-        "OK, Added {note_name} in *{chat_name}*.\nGet it with /get {note_name}, or #{note_name}".format(note_name=note_name, chat_name=chat_name), parse_mode=ParseMode.MARKDOWN)
+        "Oke, Ditambahkan {note_name} in *{chat_name}*.\nDapatkan dengan /get {note_name}".format(note_name=note_name, chat_name=chat_name), parse_mode=ParseMode.MARKDOWN)
 
     if msg.reply_to_message and msg.reply_to_message.from_user.is_bot:
         if text:
@@ -208,9 +208,9 @@ def clear(bot: Bot, update: Update, args: List[str]):
         notename = args[0]
 
         if sql.rm_note(chat_id, notename):
-            update.effective_message.reply_text("Successfully removed note.")
+            update.effective_message.reply_text("Berhasil menghapus catatan!")
         else:
-            update.effective_message.reply_text("That's not a note in my database!")
+            update.effective_message.reply_text("Itu bukan catatan di database saya!")
 
 
 @run_async
@@ -222,7 +222,7 @@ def list_notes(bot: Bot, update: Update):
     if not conn == False:
         chat_id = conn
         chat_name = dispatcher.bot.getChat(conn).title
-        msg = "*Notes in {}:*\n"
+        msg = "*Notes in {chat_name}:*\nDapatkan /get catatan"
     else:
         chat_id = update.effective_chat.id
         if chat.type == "private":
@@ -230,19 +230,19 @@ def list_notes(bot: Bot, update: Update):
             msg = "*Local Notes:*\n"
         else:
             chat_name = chat.title
-            msg = "*Notes in {}:*\n"
+            msg = "*Catatan Di {chat_name}:*\nDapatkan /get catatan"
 
     note_list = sql.get_all_chat_notes(chat_id)
 
     for note in note_list:
-        note_name = escape_markdown(" - {}\n".format(note.name))
+        note_name = escape_markdown(" ✰ {}\n".format(note.name))
         if len(msg) + len(note_name) > MAX_MESSAGE_LENGTH:
             update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
             msg = ""
         msg += note_name
 
     if msg == "*Notes in chat:*\n":
-        update.effective_message.reply_text("No notes in this chat!")
+        update.effective_message.reply_text("Tidak ada catatan dalam obrolan ini!")
 
     elif len(msg) != 0:
         update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
@@ -280,7 +280,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     notes = sql.get_all_chat_notes(chat_id)
-    return "There are `{}` notes in this chat.".format(len(notes))
+    return "Ada `{}` catatan dalam obrolan ini.".format(len(notes))
 
 
 __help__ = """
