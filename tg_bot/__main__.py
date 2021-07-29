@@ -400,10 +400,10 @@ def main():
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
 
-    help_handler = CommandHandler("help", get_help)
+    help_handler = CommandHandler("privasi", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
 
-    settings_handler = CommandHandler("settings", get_settings)
+    settings_handler = CommandHandler("private", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     donate_handler = CommandHandler("donate", donate)
