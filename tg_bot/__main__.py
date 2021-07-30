@@ -44,9 +44,8 @@ Main Menu Untuk @pikyus1
 
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll of the following commands  / or ! can  be used...\n")
 
-DONATE_STRING = """Akhirnya Saya Senang Sekali Kamu Berdonasi Untuk My Creator
-Jika Kamu Mau Bener Bener Mau Berdonasi, Cara Nya Mudah Sekali, Ada Dua Cara Sebenarnya 
-Kamu Bisa Klik Link Dibawah Atau Langsung Hubungi My Creator [Sendi](https://t.me/pikyus1)"""
+DONATE_STRING = """ Ini adalah Bot Manager [RoseUserbot](https://t.me/Rose_Userbot) khusus untuk 
+grup, kirim command di grup."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -368,8 +367,8 @@ def donate(bot: Bot, update: Update):
         update.effective_message.reply_text(DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
         if OWNER_ID != 254318997 and DONATION_LINK:
-            update.effective_message.reply_text("You can also donate to the person currently running me "
-                                                "[here]({})".format(DONATION_LINK),
+            update.effective_message.reply_text("Anda juga dapat menyumbang kepada orang yang saat ini menjalankan saya "
+                                                "[Sendi]({})".format(DONATION_LINK),
                                                 parse_mode=ParseMode.MARKDOWN)
 
     else:
@@ -409,7 +408,7 @@ def main():
     settings_handler = CommandHandler("privasi", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    donate_handler = CommandHandler("donate", donate)
+    donate_handler = CommandHandler("start", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     # dispatcher.add_handler(test_handler)
