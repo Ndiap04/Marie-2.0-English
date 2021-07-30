@@ -44,8 +44,8 @@ Main Menu Untuk @pikyus1
 
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll of the following commands  / or ! can  be used...\n")
 
-DONATE_STRING = """ Ini adalah Bot Manager [RoseUserbot](https://t.me/Rose_Userbot) khusus untuk 
-grup, kirim command di grup."""
+DONATE_STRING = """ Ini adalah Bot Manager [RoseUserbot](https://t.me/Rose_Userbot) 
+khusus untuk grup, kirim command di grup."""
 
 IMPORTED = {}
 MIGRATEABLE = []
