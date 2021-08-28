@@ -18,29 +18,29 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-hoi {}, my name is {}! if you have any questions about how to use me please give me /help... 
+Halo {}, nama saya adalah {}! 
 
-im a group manager bot maintained by  [this person](tg://user?id={}).
+Anda tahu betapa sulitnya untuk mengelola grup jadi di sini adalah solusi untuk Anda.
 
-My future updates will be put into This Channel - @MarieChechi & My Support Group @InFoTelGroup.
+Pemilik Saya Adalah [Sendi](tg://user?id={}).
 
 This is my [Deploy Code](https://heroku.com/deploy?template=https://github.com/TGExplore/Marie-2.0-English),
 you can create clone same like me..
 
-For more commands click /help...
-
-**Keep in mind that any changes you DO do to the source have to be on github, as per the license.**
+Tombol Klik /help atau Bantuan di bawah ini untuk mengetahui lebih lanjut tentang cara menggunakan saya untuk potensi penuh saya.
 
 """
 
 HELP_STRINGS = """
 
 Hello! my name *{}*.
-
-Main Menu Untuk @pikyus1
-
-/private - Menu
-/privasi - settings
+*Main* available commands:
+ - /start: Start the bot...
+ - /help: help....
+ - /donasi: To find out more about donating!
+ - /settings:
+   - in PM: To find out what SETTINGS you have set....
+   - in a group:
 
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll of the following commands  / or ! can  be used...\n")
 
@@ -402,13 +402,13 @@ def migrate_chats(bot: Bot, update: Update):
 def main():
     test_handler = CommandHandler("test", test)
 
-    help_handler = CommandHandler("private", get_help)
+    help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
 
-    settings_handler = CommandHandler("privasi", get_settings)
+    settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    donate_handler = CommandHandler("start", donate)
+    donate_handler = CommandHandler("donasi", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     # dispatcher.add_handler(test_handler)
