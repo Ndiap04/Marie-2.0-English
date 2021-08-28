@@ -24,9 +24,6 @@ Anda tahu betapa sulitnya untuk mengelola grup jadi di sini adalah solusi untuk 
 
 Pemilik Saya Adalah [Sendi](tg://user?id={}).
 
-This is my [Deploy Code](https://heroku.com/deploy?template=https://github.com/TGExplore/Marie-2.0-English),
-you can create clone same like me..
-
 Tombol Klik /help atau Bantuan di bawah ini untuk mengetahui lebih lanjut tentang cara menggunakan saya untuk potensi penuh saya.
 
 """
@@ -401,6 +398,7 @@ def migrate_chats(bot: Bot, update: Update):
 
 def main():
     test_handler = CommandHandler("test", test)
+    tart_handler = CommandHandler("start", start, pass_args=True)
 
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
